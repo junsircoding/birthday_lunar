@@ -42,7 +42,6 @@ DTSTART;VALUE=DATE:{dtstr_start}
 DTEND;VALUE=DATE:{dtstr_end}
 DTSTAMP;VALUE=DATE:{dtstr_start}
 UID:{dtstr2_start}/{dtstr2_end}/NateScarlet/birthday-cn
-DESCRIPTION:{desc}
 END:VEVENT
 """
 
@@ -67,7 +66,7 @@ for name, lunar_month, lunar_day, is_leap, birth_year in birthdays:
             dtstr_end = (tz.localize(datetime(solar.year, solar.month, solar.day) + timedelta(days=1))).strftime("%Y%m%d")
             dtstr2_start = tz.localize(datetime(solar.year, solar.month, solar.day)).strftime("%Y-%m-%d")
             dtstr2_end = (tz.localize(datetime(solar.year, solar.month, solar.day) + timedelta(days=1))).strftime("%Y-%m-%d")
-            desc = f"{name}的农历生日：{'闰' if is_leap else ''}{lunar_month}月{lunar_day}日，年龄：{age}岁"
+            # desc = f"{name}的农历生日：{'闰' if is_leap else ''}{lunar_month}月{lunar_day}日，年龄：{age}岁"
             
             with open("lunar_birthdays_1900_2100.ics", "a") as f:
                 f.write(event.format(
@@ -76,7 +75,7 @@ for name, lunar_month, lunar_day, is_leap, birth_year in birthdays:
                     dtstr_end=dtstr_end,
                     dtstr2_start=dtstr2_start,
                     dtstr2_end=dtstr2_end,
-                    desc=desc
+                    # desc=desc
 
                 ))
         except DateNotExist:
