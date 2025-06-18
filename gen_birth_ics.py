@@ -43,7 +43,8 @@ DTEND;VALUE=DATE:{dtstr_end}
 DTSTAMP;VALUE=DATE:{dtstr_start}
 UID:{dtstr2_start}/{dtstr2_end}/NateScarlet/birthday-cn
 DESCRIPTION:{desc}
-END:VEVENT"""
+END:VEVENT
+"""
 
 with open("lunar_birthdays_1900_2100.ics", "w") as f:
     f.write(header)
